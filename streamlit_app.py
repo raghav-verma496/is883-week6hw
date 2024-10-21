@@ -24,7 +24,7 @@ if prompt:
     temperature=0.9
   )
 
-    response2 = client.chat.completions.create(
+  response2 = client.chat.completions.create(
     model="gpt2",
     messages=[
       {"role": "system", "content": "Complete the following prefix"},
