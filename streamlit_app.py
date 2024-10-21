@@ -25,7 +25,7 @@ if st.button("Generate Response"):
     inputs = tokenizer(prompt, return_tensors="pt")
     outputs_high = model.generate(
         inputs['input_ids'], 
-        max_length=max_tokens
+        max_length=max_tokens,
         do_sample=True, 
         temperature=1.9
     )
