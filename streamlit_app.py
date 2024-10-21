@@ -5,7 +5,7 @@ import os
 st.title("Raghav's Week 6 Assignment")
 
 prompt = st.text_input("What is your prompt today?", "Enter your prompt here")
-max_tokens = st.number_input("Enter the number of tokens for the response", min_value=1, max_value=100, value=50)
+max_tokens = st.number_input("Enter the number of tokens for the response")
 
 ### Load your API Key
 my_secret_key = st.secrets['IS883-OpenAIKey-RV']
