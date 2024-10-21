@@ -35,10 +35,6 @@ if prompt:
   )
 
 ### Display
-st.write(
-    response.choices[0].message.content
-)
-
 st.subheader("Response 1:")
 st.write(response1.choices[0].message.content)
 
