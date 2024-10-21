@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import Openai()
 import os
 
 st.title("My Super Awesome OpenAI API Deployment!")
@@ -12,6 +12,9 @@ my_secret_key = st.secrets['IS883-OpenAIKey-RV']
 openai.api_key = my_secret_key
 
 ### OpenAI stuff
+client = OpenAI()
+response = client.chat.completions.create(
+  model="gpt-4o-mini",
 if prompt:
   response1 = openai.Completion.create(
     model="gpt-4o-mini",
