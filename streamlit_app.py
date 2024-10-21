@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 import os
 
 st.title("My Super Awesome OpenAI API Deployment!")
@@ -12,7 +12,6 @@ my_secret_key = st.secrets['IS883-OpenAIKey-RV']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
 ### OpenAI stuff
-client = OpenAI()
 if prompt:
   response1 = client.Completion.create(
     model="gpt2",
