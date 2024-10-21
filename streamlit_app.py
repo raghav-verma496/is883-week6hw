@@ -16,20 +16,14 @@ client = OpenAI()
 if prompt:
   response1 = client.chat.completions.create(
     model="gpt2",
-    messages=[
-      {"role": "system", "content": "Complete the following prefix"},
-      {"role": "user", "content": prompt}
-    ],
+    prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.9
   )
 
   response2 = client.chat.completions.create(
     model="gpt2",
-    messages=[
-      {"role": "system", "content": "Complete the following prefix"},
-      {"role": "user", "content": prompt}
-    ],
+    prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.1
   )
