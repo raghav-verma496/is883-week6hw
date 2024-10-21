@@ -16,7 +16,6 @@ if prompt:
   response1 = openai.ChatCompletion.create(
     model="gpt-4o-mini",
     messages=[
-            {"role": "system", "content": "You are a highly creative AI."},
             {"role": "user", "content": prompt}
     ],
     max_tokens=max_tokens,
@@ -26,7 +25,6 @@ if prompt:
   response2 = openai.ChatCompletion.create(
     model="gpt-4o-mini",
     messages=[
-            {"role": "system", "content": "You are a highly predictable AI."},
             {"role": "user", "content": prompt}
     ],
     max_tokens=max_tokens,
