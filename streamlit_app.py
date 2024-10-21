@@ -14,14 +14,14 @@ openai.api_key = my_secret_key
 ### OpenAI stuff
 if prompt:
   response1 = openai.Completion.create(
-    model="gpt2",
+    model="gpt-4o-mini",
     prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.9
   )
 
   response2 = openai.Completion.create(
-    model="gpt2",
+    model="gpt-4o-mini",
     prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.1
