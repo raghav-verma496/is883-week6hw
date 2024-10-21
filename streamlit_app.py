@@ -2,6 +2,8 @@ import streamlit as st
 import openai
 import os
 
+pip install openai
+
 st.title("My Super Awesome OpenAI API Deployment!")
 
 prompt = st.text_input("What is your prompt today?", "Enter your prompt here")
