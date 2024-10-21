@@ -23,22 +23,22 @@ max_tokens = st.number_input("Enter the number of tokens for the response", min_
 ### Engineer the types of responses
 if st.button("Generate Response"):
     inputs = tokenizer(prompt, return_tensors="pt")
-  outputs_high = model.generate(
+    outputs_high = model.generate(
         inputs['input_ids'], 
         max_length=max_tokens
         do_sample=True, 
         temperature=1.9
     )
-  highly_creative_response = tokenizer.decode(outputs_high[0], skip_special_tokens=True)
+    highly_creative_response = tokenizer.decode(outputs_high[0], skip_special_tokens=True)
     st.write("Highly Creative Response:")
     st.write(highly_creative_response)
 
-  outputs_low = model.generate(
+    outputs_low = model.generate(
         inputs['input_ids'], 
         max_length=max_tokens, 
         do_sample=True, 
         temperature=0.5
      )
-  highly_predictable_response = tokenizer.decode(outputs_low[0], skip_special_tokens=True)
+    highly_predictable_response = tokenizer.decode(outputs_low[0], skip_special_tokens=True)
     st.write("Highly Predictable Response:")
     st.write(highly_predictable_response)
