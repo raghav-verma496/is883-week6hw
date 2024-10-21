@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import os
 
-pip install openai
+pip install openai==0.28
 
 st.title("My Super Awesome OpenAI API Deployment!")
 
