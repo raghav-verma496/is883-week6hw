@@ -1,5 +1,5 @@
 import streamlit as st
-from openai
+import openai
 import os
 
 st.title("My Super Awesome OpenAI API Deployment!")
