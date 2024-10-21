@@ -14,14 +14,14 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 ### OpenAI stuff
 client = OpenAI()
 if prompt:
-  response1 = client.chat.completions.create(
+  response1 = client.Completion.create(
     model="gpt2",
     prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.9
   )
 
-  response2 = client.chat.completions.create(
+  response2 = client.Completion.create(
     model="gpt2",
     prompt=prompt,
     max_tokens=max_tokens,
