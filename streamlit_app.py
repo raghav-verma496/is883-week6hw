@@ -13,14 +13,14 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 
 ### OpenAI stuff
 if prompt:
-  response1 = openai.Completion.create(
+  response1 = openai.Completions.create(
     model="gpt2",
     prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.9
   )
 
-  response2 = openai.Completion.create(
+  response2 = openai.Completions.create(
     model="gpt2",
     prompt=prompt,
     max_tokens=max_tokens,
