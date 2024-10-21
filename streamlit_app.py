@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import os
 
 st.title("My Super Awesome OpenAI API Deployment!")
@@ -12,8 +12,7 @@ my_secret_key = st.secrets['IS883-OpenAIKey-RV']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
 ### OpenAI stuff
-generator = pipeline('text-generation', model='gpt2')
-generator(
+client = OpenAI()
 if prompt:
   response1 = client.Completion.create(
     model="gpt2",
@@ -28,7 +27,7 @@ if prompt:
     max_tokens=max_tokens,
     temperature=0.1
   )
-)
+
 ### Display
 st.subheader("Response 1:")
 st.write(response1.choices[0].message.content)
