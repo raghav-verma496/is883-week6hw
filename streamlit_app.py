@@ -35,7 +35,7 @@ if prompt:
 
 ### Display
 st.subheader("Response 1:")
-st.write(response1.choices[0].text)
+st.write(response1.choices[0].message['content'])
 
 st.subheader("Response 2:")
-st.write(response2.choices[0].text)
+st.write(response2.choices[0].message['content'])
