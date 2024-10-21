@@ -12,7 +12,8 @@ my_secret_key = st.secrets['IS883-OpenAIKey-RV']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
 ### OpenAI stuff
-client = OpenAI()
+generator = pipeline('text-generation', model='gpt2')
+generator(
 if prompt:
   response1 = client.Completion.create(
     model="gpt2",
