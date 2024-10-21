@@ -1,41 +1,44 @@
 import streamlit as st
-import openai
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+import torch
 import os
 
+### Title of app on Streamlit
 st.title("Raghav's Week 6 Assignment")
 
+### Enter BUID
+BUID = 58489808
+
+### OpenAI Secret Key
+my_secret_key = st.secrets['IS883-OpenAIKey-RV']
+
+### Load GPT2 from hugging face
+model = GPT2LMHeadModel.from_pretrained("gpt2")
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+
+### Prompt input on streamlit app by user
 prompt = st.text_input("What is your prompt today?", "Enter your prompt here")
 max_tokens = st.number_input("Enter the number of tokens for the response", min_value=1, max_value=100, value=50)
 
-### Load your API Key
-my_secret_key = st.secrets['IS883-OpenAIKey-RV']
-openai.api_key = my_secret_key
+### Engineer the types of responses
+if st.button("Generate Response"):
+    inputs = tokenizer(prompt, return_tensors="pt")
+ outputs_high = model.generate(
+        inputs['input_ids'], 
+        max_length=max_tokens
+        do_sample=True, 
+        temperature=1.9
+    )
+    highly_creative_response = tokenizer.decode(outputs_high[0], skip_special_tokens=True)
+    st.write("Highly Creative Response:")
+    st.write(highly_creative_response)
 
-### OpenAI stuff
-if prompt:
-  response1 = openai.ChatCompletion.create(
-    model="gpt-4o-mini",
-    messages=[
-            {"role": "system", "content": "You are a highly creative AI."},
-            {"role": "user", "content": prompt}
-    ],
-    max_tokens=max_tokens,
-    temperature=0.9
-  )
-
-  response2 = openai.ChatCompletion.create(
-    model="gpt-4o-mini",
-    messages=[
-            {"role": "system", "content": "You are a highly predictable AI."},
-            {"role": "user", "content": prompt}
-    ],
-    max_tokens=max_tokens,
-    temperature=0.1
-  )
-
-### Display
-st.subheader("Response 1:")
-st.write(response1.choices[0].message['content'])
-
-st.subheader("Response 2:")
-st.write(response2.choices[0].message['content'])
+    outputs_low = model.generate(
+        inputs['input_ids'], 
+        max_length=max_tokens, 
+        do_sample=True, 
+        temperature=0.5
+    )
+    highly_predictable_response = tokenizer.decode(outputs_low[0], skip_special_tokens=True)
+    st.write("Highly Predictable Response:")
+    st.write(highly_predictable_response)
