@@ -13,14 +13,14 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 
 ### OpenAI stuff
 if prompt:
-  response1 = openai.Completions.create(
+  response1 = openai.Completion.create(
     model="gpt2",
     prompt=prompt,
     max_tokens=max_tokens,
     temperature=0.9
   )
 
-  response2 = openai.Completions.create(
+  response2 = openai.Completion.create(
     model="gpt2",
     prompt=prompt,
     max_tokens=max_tokens,
@@ -29,7 +29,7 @@ if prompt:
 
 ### Display
 st.subheader("Response 1:")
-st.write(response1.choices[0].message.content)
+st.write(response1.choices[0].text)
 
 st.subheader("Response 2:")
-st.write(response2.choices[0].message.content)
+st.write(response2.choices[0].text)
