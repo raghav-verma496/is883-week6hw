@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import Openai
+import openai
 import os
 
 st.title("My Super Awesome OpenAI API Deployment!")
@@ -12,20 +12,23 @@ my_secret_key = st.secrets['IS883-OpenAIKey-RV']
 openai.api_key = my_secret_key
 
 ### OpenAI stuff
-client = OpenAI()
-response = client.chat.completions.create(
-  model="gpt-4o-mini",
 if prompt:
-  response1 = openai.Completion.create(
+  response1 = openai.ChatCompletion.create(
     model="gpt-4o-mini",
-    prompt=prompt,
+    messages=[
+            {"role": "system", "content": "You are a highly creative AI."},
+            {"role": "user", "content": prompt}
+    ],
     max_tokens=max_tokens,
     temperature=0.9
   )
 
-  response2 = openai.Completion.create(
+  response2 = openai.ChatCompletion.create(
     model="gpt-4o-mini",
-    prompt=prompt,
+    messages=[
+            {"role": "system", "content": "You are a highly predictable AI."},
+            {"role": "user", "content": prompt}
+    ],
     max_tokens=max_tokens,
     temperature=0.1
   )
